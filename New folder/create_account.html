@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - AgriAssist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: #004d00;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        .logo {
+            max-width: 150px;
+            margin-right: 20px;
+        }
+        .title {
+            color: #004d00;
+            margin: 0;
+            font-size: 2em;
+        }
+        .container {
+            max-width: 350px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+            background: rgba(46, 139, 87, 0.3);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 94%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            background: rgba(46, 139, 87, 0.7);
+            text-decoration: none;
+            text-align: center;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: rgba(46, 139, 87, 1);
+        }
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            background: rgba(46, 139, 87, 0.7);
+            text-decoration: none;
+            font-size: 1em;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function createAccount(event) {
+            event.preventDefault();
+
+            // Get input values
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            // Check if password matches confirm password
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            // Save account details to localStorage
+            localStorage.setItem('email', email);
+            localStorage.setItem('password', password);
+
+            // Redirect to sign-in page
+            window.location.href = "sign_in.html";
+        }
+    </script>
+<script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+
+<script>
+
+	function loadGoogleTranslate()
+
+	{
+
+		new google.translate.TranslateElement("myid")
+
+	}
+
+</script>
+
+<div id="myid">Choose Language</div>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <img src="images/logo.png" alt="AgriTech Logo" class="logo">
+            <h1 class="title">Create Account - AgriAssist</h1>
+        </div>
+    </div>
+    <div class="container">
+        <form onsubmit="createAccount(event)">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <button type="submit" class="button">Create Account</button>
+        </form>
+        <a href="sign_in.html" class="back-button">Back to Sign In</a>
+    </div>
+</body>
+</html>

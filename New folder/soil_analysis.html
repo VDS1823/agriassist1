@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Analysis Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.usbiopower.com/hs-fs/hubfs/Blog%20Art/AOE-Blog-Organic-Soil.jpg?width=1280&name=AOE-Blog-Organic-Soil.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(46, 139, 87, 0.3);
+            box-shadow: 0 0 10px rgba(0,0,0,0.6);
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        caption {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Soil Analysis Tool</h1>
+        <form id="soilAnalysisForm">
+            <div class="form-group">
+                <label for="location">Enter your location:</label>
+                <input type="text" id="location" name="location" required>
+            </div>
+            <div class="form-group">
+                <label for="soilType">Select soil type:</label>
+                <select id="soilType" name="soilType">
+                    <option value="clay">Clay</option>
+                    <option value="silt">Silt</option>
+                    <option value="sand">Sand</option>
+                    <option value="loam">Loam</option>
+                </select>
+            </div>
+            <button type="submit">Analyze Soil</button>
+        </form>
+
+        <table id="analysisTable">
+            <caption>Soil Analysis Results</caption>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                    <th>Unit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Results will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById('soilAnalysisForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting the traditional way
+            
+            // Sample data for demonstration purposes
+            const sampleResults = [
+                { parameter: 'pH', value: '6.5', unit: '' },
+                { parameter: 'Nitrogen', value: '1.2', unit: 'g/kg' },
+                { parameter: 'Phosphorus', value: '0.8', unit: 'g/kg' },
+                { parameter: 'Potassium', value: '2.0', unit: 'g/kg' }
+            ];
+            
+            // Clear existing results
+            const tbody = document.querySelector('#analysisTable tbody');
+            tbody.innerHTML = '';
+            
+            // Add new results
+            sampleResults.forEach(result => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${result.parameter}</td>
+                    <td>${result.value}</td>
+                    <td>${result.unit}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        });
+    </script>
+</body>
+</html>
